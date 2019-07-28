@@ -1,3 +1,5 @@
+const sha256 = require('js-sha256');
+
 module.exports = (db) => {
     /*
     * ===========================================
@@ -5,29 +7,32 @@ module.exports = (db) => {
     * ===========================================
     */
 
-    let indexControllerCallback = (request, response) => {
-          db.pokemon.getAll((error, allPokemon) => {
-            response.render('pokemon/index', { allPokemon });
-          });
+
+    let indexCallback = (req, res) => {
+        res.render('index');
+    };
+    let tweedrCallback = (req, res) => {
+        res.render('home');
     };
 
+    let registerCallback = (req, res) => {
+        let newUser = req.body;
+        console.log(newUser)
+        res.render('home');
 
-    let indexCallback = (request, response) => {
+        // let hashedPass = sha256(newUser.password);
 
-        response.render('index');
-    };
+        // const queryString = `INSERT INTO users (name, password) VALUES ($1, $2) RETURNING *`;
+        // const values = [newUser.name, hashedPass];
 
-    let loginCallback = (request, response) => {
+        // db.data.register((error, newUser) =>{
+        //     console.log('new user created!!')
+        //     response.cookie('loggedin', hashedCookie)
+        //     response.cookie('user_id', userID)
+        //     response.render('home');
 
-        response.render('login');
-    };
-    let signupCallback = (request, response) => {
+        // });
 
-        response.render('signup');
-    };
-    let tweedrCallback = (request, response) => {
-
-        response.render('home');
     };
 
 
@@ -40,9 +45,8 @@ module.exports = (db) => {
    */
   return {
     index: indexCallback,
-    login: loginCallback,
-    signup: signupCallback,
     tweedr: tweedrCallback,
+    register: registerCallback,
 
   };
 

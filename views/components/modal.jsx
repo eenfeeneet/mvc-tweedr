@@ -27,7 +27,7 @@ class Modal extends React.Component {
                                         </div>
                                     </div>
 
-                                    <form action="" method="post" name="login">
+                                    <form action="/tweedr/register" method="post" name="login">
                                         <div className="form-group">
                                         <label htmlFor="inputUserName">User Name</label>
                                         <input type="text" name="name"  className="form-control" id="username"  placeholder="Enter User Name"/>
@@ -35,6 +35,9 @@ class Modal extends React.Component {
                                         <div className="form-group">
                                         <label htmlFor="exampleInputEmail1">Password</label>
                                         <input type="password" name="password" id="password"  className="form-control"  placeholder="Enter Password"/>
+                                        </div>
+                                        <div className="col-md-12 text-center ">
+                                            <button type="submit" className=" btn btn-light mybtn tx-tfm">Login</button>
                                         </div>
 
                                         <div className="form-group">

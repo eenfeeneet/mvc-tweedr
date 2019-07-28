@@ -5,13 +5,13 @@ class HomeHeaeder extends React.Component {
 
     return (
 
-            <div className="row justify-content-center align-items-center">
-                <div className="col-3 mx-auto">
-                    <img src="ro.png" className="mx-auto"/>
+            <div className="row justify-content-center">
+                <div className="col-md-3 text-center ">
+                    <img src="ro.png" className="mx-auto d-block"/>
                     <h1 className="font-weight-bolder">TWEEDR</h1>
 
-                    <a role="button" className="btn btn-lg btn-outline-secondary text-uppercase mx-2"  data-toggle="modal" data-target="#modalLogIn" href="">Log in</a>
-                    <a role="button" className="btn btn-lg btn-outline-secondary text-uppercase mx-2" href="/tweedr">Enter</a>
+                    <a role="button" className="btn btn-lg btn-success text-uppercase my-2 mx-2"  data-toggle="modal" data-target="#modalLogIn" href="">Log in</a>
+                    <a role="button" className="btn btn-lg btn-success text-uppercase my-2 mx-2" href="/tweedr">Enter</a>
 
                 </div>
             </div>

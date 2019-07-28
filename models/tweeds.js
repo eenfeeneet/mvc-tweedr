@@ -1,38 +1,64 @@
-/**
- * ===========================================
- * Export model functions as a module
- * ===========================================
- */
-module.exports = (dbPoolInstance) => {
+/*
+* ===========================================
+* Export model functions as a module
+* ===========================================
+*/
 
-  // `dbPoolInstance` is accessible within this function scope
 
-  let getAll = (callback) => {
 
-    let query = 'SELECT * FROM pokemons';
+module.exports = (pool) => {
+    // inserts new user + pw into users table (returns boolean
+    let newUser = (newuser, callback) => {
 
-    dbPoolInstance.query(query, (error, queryResult) => {
-      if( error ){
+        let query = 'INSERT INTO users (name,password) VALUES ($1,$2) RETURNING *'
+        let arr = [form.name, sha256(form.password)];
 
-        // invoke callback function with results after query has executed
-        callback(error, null);
 
-      }else{
+        pool.query(query, (error, queryResult) => {
+            if( error ){
+                console.log("query unsuccessful");
+                callback(error, null);
 
-        // invoke callback function with results after query has executed
+            }else{
+                console.log("query successful");
+                if( queryResult.rows.length > 0 ){
 
-        if( queryResult.rows.length > 0 ){
-          callback(null, queryResult.rows);
+                    callback(null, queryResult.rows);
 
-        }else{
-          callback(null, null);
+
+                }else{
+                    callback(null, null);
+                }
+            }
+        });
+    };
+    // check for existing usernames returns boolean
+    let existingUser = (name, callback) => {
+        let query = `SELECT EXISTS (SELECT * FROM users WHERE name='${name}')`;
+
+        pool.query(query, (error, queryResult) => {
+            if( error ){
+                console.log("query unsuccessful");
+                callback(error, null);
+
+            }else{
+                console.log(queryResult.rows[0].exists);
+                //if username exists
+                if(queryResult.rows[0].exists){
+                    // returns (null, tru)
+                    callback(null, true);
+                }else{
+                    //if username does not exist return false
+                    callback(null, false);
+                }
+            }
+        });
+    };
+
+
+    return {
+        checkExistingUser: existingUser,
+        registerNewUser: newUser,
 
         }
-      }
-    });
-  };
-
-  return {
-    getAll,
-  };
 };

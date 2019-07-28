@@ -16,8 +16,8 @@ class Home extends React.Component {
     return (
       <html>
       <Head/>
-      <body>
-        <div className="container-fluid">
+      <body className="vertical-center">
+        <div className="container-fluid ">
             <HomeHeader/>
             <Modal/>
         </div>
