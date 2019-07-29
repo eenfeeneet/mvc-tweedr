@@ -2,8 +2,8 @@ var React = require('react');
 
 var Head = require('./components/head');
 var HomeHeader = require('./components/homeheader');
-var Modal = require('./components/modal');
-
+var ModalL = require('./components/modallogin');
+var ModalR = require('./components/modalregister');
 
 
 class Home extends React.Component {
@@ -19,7 +19,8 @@ class Home extends React.Component {
       <body className="vertical-center">
         <div className="container-fluid ">
             <HomeHeader/>
-            <Modal/>
+            <ModalL/>
+            <ModalR/>
         </div>
       </body>
       </html>

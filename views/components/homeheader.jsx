@@ -15,12 +15,6 @@ class HomeHeaeder extends React.Component {
 
                 </div>
             </div>
-
-
-
-
-
-
     );
   }
 }

@@ -7,6 +7,7 @@ body {
 	background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   height: 100vh;
 }
 .vertical-center {
@@ -15,6 +16,16 @@ body {
 
   display: flex;
   align-items: center;
+}
+.holder {
+	background-color: #317a43;
+}
+.dropdown-menu{
+	position: absolute;
+	will-change: transform;
+	top: 0px;
+	left: 0px;
+	transform: translate3d(0px, 37px, 0px);
 }
 @media (max-width: 576px) {
 	body {

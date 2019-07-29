@@ -11,7 +11,7 @@ module.exports = (pool) => {
     let newUser = (newuser, callback) => {
 
         let query = 'INSERT INTO users (name,password) VALUES ($1,$2) RETURNING *'
-        let arr = [form.name, sha256(form.password)];
+        let arr = [newUser.name, newUser.password];
 
 
         pool.query(query, (error, queryResult) => {

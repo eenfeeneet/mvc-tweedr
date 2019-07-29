@@ -63,10 +63,11 @@ pool.on('error', function (err) {
  */
 
 
-const allTweedrModelsFunction = require('./models/tweeds');
+const allUsersModelsFunction = require('./models/users');
+const usersModelsObject = allUsersModelsFunction( pool );
 
-const twidderModelsObject = allTweedrModelsFunction( pool );
-
+const allTweedsModelsFunction = require('./models/tweeds');
+const tweedsModelsObject = allTweedsModelsFunction( pool );
 
 
 /*
@@ -96,5 +97,9 @@ module.exports = {
    */
 
   // users: userModelsObject,
-  data: twidderModelsObject
+  usersDb: usersModelsObject,
+
+  // tweeds: userModelsObject,
+  tweedsDb: tweedsModelsObject
+
 };
